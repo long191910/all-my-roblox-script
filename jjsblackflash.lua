@@ -18,7 +18,7 @@ local function main(character)
 	end
 	currentConnection = animator.AnimationPlayed:Connect(function(track)
 		if track.Animation.AnimationId == funny then
-			task.delay(0.2, function()
+			task.delay(0.1, function()
 				VirtualInputManager:SendKeyEvent(true, Enum.KeyCode.Three, false, game)
 				VirtualInputManager:SendKeyEvent(false, Enum.KeyCode.Three, false, game)
 			end)
