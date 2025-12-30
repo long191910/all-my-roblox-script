@@ -1,4 +1,14 @@
 local Players = game:GetService("Players")
+task.spawn(function()
+	pcall(function()
+		game:GetService("StarterGui"):SetCore("SendNotification", {
+			Title = "Ty for using my script",
+			Text = "Please report bugs in comment",
+			Duration = 6
+		})
+	end)
+end)
+
 local VirtualInputManager = game:GetService("VirtualInputManager")
 local player = Players.LocalPlayer
 local AnimationTriggers = {
