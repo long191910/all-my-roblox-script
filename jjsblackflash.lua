@@ -1,34 +1,58 @@
 local Players = game:GetService("Players")
 local VirtualInputManager = game:GetService("VirtualInputManager")
-
 local player = Players.LocalPlayer
-local funny = "rbxassetid://100962226150441"
-local currentConnection
-local function main(character)
-	local humanoid = character:WaitForChild("Humanoid", 10)
+local AnimationTriggers = {
+	["rbxassetid://100962226150441"] = 0.18,
+	["rbxassetid://95852624447551"] = 0.18,
+	["rbxassetid://74145636023952"] = 0.18,
+	["rbxassetid://72475960800126"] = 0.20,
+}
+
+local todo1 = "rbxassetid://100081544058065"
+local todo2 = "rbxassetid://123167492985370"
+local function pressKey(keyCode)
+	VirtualInputManager:SendKeyEvent(true, keyCode, false, game)
+	VirtualInputManager:SendKeyEvent(false, keyCode, false, game)
+end
+local function setupCharacter(character)
+	local humanoid = character:WaitForChild("Humanoid", 5)
 	if not humanoid then return end
 
-	local animator = humanoid:FindFirstChildOfClass("Animator")
-	if not animator then
-		animator = Instance.new("Animator")
-		animator.Parent = humanoid
-	end
-	if currentConnection then
-		currentConnection:Disconnect()
-	end
-	currentConnection = animator.AnimationPlayed:Connect(function(track)
-		if track.Animation.AnimationId == funny then
-			task.delay(0.3, function()
-				VirtualInputManager:SendKeyEvent(true, Enum.KeyCode.Three, false, game)
-				VirtualInputManager:SendKeyEvent(false, Enum.KeyCode.Three, false, game)
+	local animator = humanoid:WaitForChild("Animator", 5)
+	if not animator then return end
+
+	animator.AnimationPlayed:Connect(function(track)
+		local animId = track.Animation.AnimationId
+		local delayTime = AnimationTriggers[animId]
+		if delayTime then
+			task.delay(delayTime, function()
+				if humanoid.Health > 0 then
+					pressKey(Enum.KeyCode.Three)
+				end
+			end)
+		end
+		if animId == todo1 then
+			task.spawn(function()
+				task.wait(0.3)
+				if humanoid.Health <= 0 then return end
+				pressKey(Enum.KeyCode.Two)
+			end)
+		end
+
+		if animId == todo2 then
+			task.spawn(function()
+				task.wait(0.6)
+				if humanoid.Health <= 0 then return end
+				pressKey(Enum.KeyCode.Two)
 			end)
 		end
 	end)
 end
 if player.Character then
-	main(player.Character)
+	setupCharacter(player.Character)
 end
+
 player.CharacterAdded:Connect(function(character)
-	task.wait(0.1)
-	main(character)
+	task.wait(0.2)
+	setupCharacter(character)
 end)
