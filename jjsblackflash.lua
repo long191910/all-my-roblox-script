@@ -1,4 +1,6 @@
 local Players = game:GetService("Players")
+local VirtualInputManager = game:GetService("VirtualInputManager")
+local player = Players.LocalPlayer
 task.spawn(function()
 	pcall(function()
 		game:GetService("StarterGui"):SetCore("SendNotification", {
@@ -8,9 +10,6 @@ task.spawn(function()
 		})
 	end)
 end)
-
-local VirtualInputManager = game:GetService("VirtualInputManager")
-local player = Players.LocalPlayer
 local AnimationTriggers = {
 	["rbxassetid://100962226150441"] = 0.18,
 	["rbxassetid://95852624447551"] = 0.18,
