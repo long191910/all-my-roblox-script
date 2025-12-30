@@ -14,3 +14,9 @@ animator.AnimationPlayed:Connect(function(animationTrack)
 		end)
 	end
 end)
+if player.Character then
+	setupCharacter(player.Character)
+end
+player.CharacterAdded:Connect(function(character)
+	setupCharacter(character)
+end)
