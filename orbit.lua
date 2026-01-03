@@ -65,7 +65,7 @@ SpeedSlider.Parent = MainFrame
 
 ToggleOrbit.Size = UDim2.new(0.8, 0, 0.2, 0)
 ToggleOrbit.Position = UDim2.new(0.1, 0, 0.75, 0)
-ToggleOrbit.Text = "Start Orbit"
+ToggleOrbit.Text = "Start"
 ToggleOrbit.Font = Enum.Font.GothamBold
 ToggleOrbit.TextSize = 14
 ToggleOrbit.BackgroundColor3 = Color3.fromRGB(60, 120, 255)
@@ -75,7 +75,7 @@ ToggleOrbit.Parent = MainFrame
 ToggleGui.Size = UDim2.new(0, 50, 0, 50)
 ToggleGui.Position = UDim2.new(0.92, -55, 0.05, 0)
 ToggleGui.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
-ToggleGui.Text = "🛰️"
+ToggleGui.Text = "x"
 ToggleGui.Font = Enum.Font.GothamBold
 ToggleGui.TextSize = 20
 ToggleGui.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -108,7 +108,7 @@ local function orbitTarget()
     while orbiting do
         if not targetPlayer or not targetPlayer.Character or not targetPlayer.Character:FindFirstChild("HumanoidRootPart") then
             orbiting = false
-            ToggleOrbit.Text = "Start Orbit"
+            ToggleOrbit.Text = "Start"
             game.Workspace.CurrentCamera.CameraSubject = LocalPlayer.Character:FindFirstChild("Humanoid")
             repeat
                 wait(1)
@@ -131,13 +131,13 @@ end
 ToggleOrbit.MouseButton1Click:Connect(function()
     if orbiting then
         orbiting = false
-        ToggleOrbit.Text = "Start Orbit"
+        ToggleOrbit.Text = "Start"
         game.Workspace.CurrentCamera.CameraSubject = LocalPlayer.Character:FindFirstChild("Humanoid")
     else
         targetPlayer = getTarget()
         if targetPlayer and targetPlayer.Character and targetPlayer.Character:FindFirstChild("HumanoidRootPart") then
             orbiting = true
-            ToggleOrbit.Text = "Stop Orbit"
+            ToggleOrbit.Text = "Stop"
             orbitTarget()
         end
     end
