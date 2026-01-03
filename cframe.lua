@@ -12,7 +12,6 @@ local SpeedEnabled = false
 local Dragging = false
 local DragStart, StartPos
 
---// GUI
 local ScreenGui = Instance.new("ScreenGui")
 ScreenGui.Parent = game.CoreGui
 
@@ -57,7 +56,7 @@ local ToggleButton = Instance.new("TextButton")
 ToggleButton.Size = UDim2.new(1, -20, 0, 30)
 ToggleButton.Position = UDim2.new(0, 10, 0, 80)
 ToggleButton.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-ToggleButton.Text = "Bật Speed"
+ToggleButton.Text = "CFRAME"
 ToggleButton.Font = Enum.Font.Gotham
 ToggleButton.TextSize = 14
 ToggleButton.TextColor3 = Color3.new(1, 1, 1)
