@@ -59,7 +59,7 @@ HideButton.Parent = ScreenGui
 HideButton.Position = UDim2.new(0.05, 0, 0.9, 0)
 HideButton.Size = UDim2.new(0, 50, 0, 30)
 HideButton.Font = Enum.Font.SourceSansBold
-HideButton.Text = "👁"
+HideButton.Text = "x"
 HideButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 HideButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
 UICorner:Clone().Parent = HideButton
@@ -122,9 +122,9 @@ end)
 HideButton.MouseButton1Click:Connect(function()
 	Frame.Visible = not Frame.Visible
 	if Frame.Visible then
-		HideButton.Text = "👁"
+		HideButton.Text = "x"
 	else
-		HideButton.Text = "👀"
+		HideButton.Text = "x"
 	end
 end)
 
